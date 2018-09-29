@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="slide_style.css">
+</head>
+<script type="text/javascript" src="slide.js"></script>
+<body>
+
+  <h1>
+    Hello, Slide Show !
+  </h1>
+  <p>How do You want the show to play? </p>
+  <button onclick="myf1() " id = num1> Random</button>
+  <button onclick="myf2() " id = num2> Sequential</button>
+
+  <p>What effect do you want to see? </p>
+  <form>
+    <select name="type">
+      <option value="transition">Transition</option>
+      <option value="transformation">Transformation</option>
+    </select>
+  </form>
+  <button onclick="myf2() " id = num2> Submit</button>
+
+
+  <div class = "slideshow-container">
+    <canvas id="myCanvas" width="300%" height="500%" style="border:1px solid hsla(0, 0%, 83%, 0.445);">
+    Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <div class="text">Swimming in the Sun</div>
+    </div>
+
+    <script>
+      var img = new Image();
+      img.src = "1.JPG";
+      window.onload = function() {
+      img.width = "80%";
+      img.height = "80%";
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.drawImage(img, 10, 10);
+    }
+    </script>
+
+  <script>
+    var img = new Image();
+    img.src = "2.JPG";
+    window.onload = function() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.drawImage(img, 10, 10);
+  }
+  </script>
+
+<script>
+    var img = new Image();
+    img.src = "3.JPG";
+    window.onload = function() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.drawImage(img, 10, 10);
+  }
+  </script>
+
+</div>
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+<br>
+
+</body>
+</html>
