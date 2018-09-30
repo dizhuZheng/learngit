@@ -1,4 +1,5 @@
-Dizhu Cheat Sheet
+Basic Bash Commands
+
 Change directory to ~/Desktop
 cd ~/Desktop
 
@@ -22,7 +23,7 @@ Make a new directory ~/a
 mkdir ~/a
 
 If you run mkdir ~/a twice you will get an error
-mkdir: /Users/karl/a: File exists. You can remove it by running
+mkdir: /Users/user/a: File exists. You can remove it by running
 rm -r ~/a
 And then run
 mkdir ~/a
