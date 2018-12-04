@@ -1,46 +1,88 @@
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="slide_style.css">
-</head>
-<!--<script type="text/javascript" src="slide.js"></script>-->
-<body>
+<meta name="viewport" content="width=device-width", charset="utf-8", initial-scale="1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="slide_style.css">
+<script src = "slide.js" ></script>
 
-  <h1>
-    Hello, Slide Show !
-  </h1>
+</head>
+  <body>
+      <h1>
+          Hello, Slide Show !
+      </h1>
+      <div>
+          <div class="w3-content w3-display-container">
+              <img class="mySlides" src="img_snowtops.jpg" style="width:100%">
+              <img class="mySlides" src="img_lights.jpg" style="width:100%">
+              <img class="mySlides" src="img_mountains.jpg" style="width:100%">
+              <img class="mySlides" src="img_forest.jpg" style="width:100%">
+          </div>
+      <button onclick="sequence()"> sequence()</button>
+      <img id="me">
+      </div>
 
   <!---
-  <p>How do You want the show to play? </p>
-  <button onclick="myf1() " id = num1> Random</button>
-  <button onclick="myf2() " id = num2> Sequential</button>
+
+
+
+
+
+
+      <p>How do you want the show to be played? </p>
+      <button onclick="random()"> Random</button>
+      <div id="main" style="display:none;">
+      <canvas id="viewport"></canvas>
+      <h2 id = "me" class = "text-block"></h2>
+      </div>
+
+
+
+    <button onclick="myFunction()"> Sequence</button>
+
+  <div id = "major" display = "none">
+    <button onclick="sequence()"> Sequence</button>
+
+    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+  </div>
+
+
+  <p>How do you want the show to be played? </p>
+  <button onclick="random()"> Random</button>
+  <div id="main" style="display:none;">
+  <canvas id="viewport"></canvas>
+  <h2 id = "me" class = "text-block"></h2>
+  </div>
+
+  <button onclick="nextSlide()"> Sequence</button>
+  <ul id="slides">
+      <li class="slide showing">Slide 1</li>
+      <li class="slide">Slide 2</li>
+      <li class="slide">Slide 3</li>
+      <li class="slide">Slide 4</li>
+      <li class="slide">Slide 5</li>
+  </ul>
 
   <p>What effect do you want to see? </p>
+
   <form>
-    <select name="type">
+    <select id = "effect">
       <option value="transition">Transition</option>
       <option value="transformation">Transformation</option>
     </select>
   </form>
 
-  <form onsubmit="myFunction()">
-  <button type = "submit" value = "Submit"> Submit</button>
-  </form>
+  <button type = "button" onlick = "myf1()"> Submit</button>
+    <script>
+    var input1 = document.getElementById("effect").value;
+    if (input1 == "Transformation")
+    {
 
-  <script>
-    function myFunction() {
-        alert("The form was submitted");
     }
+    function myf1() {
+      document.getElementById("main").style.display = "";
+  }
   </script>
-  -->
-  <br>
-  <br>
-  <button class = "b" onclick="mfunction()">Click Me!</button>
-  <script>
-    function mfunction() {
-        location.replace("file:///Users/dizhuzheng/Code/TMA1/part3/slide.html")
-    }
-  </script>
-
+-->
 </body>
 </html>
