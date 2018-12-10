@@ -1,88 +1,62 @@
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width", charset="utf-8", initial-scale="1.0">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="slide_style.css">
-<script src = "slide.js" ></script>
-
+  <meta name="viewport" content="width=device-width" , charset="utf-8" , initial-scale="1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="slide_style.css">
+  <script type="text/javascript" src="slide.js"></script>
 </head>
-  <body>
-      <h1>
-          Hello, Slide Show !
-      </h1>
-      <div>
-          <div class="w3-content w3-display-container">
-              <img class="mySlides" src="img_snowtops.jpg" style="width:100%">
-              <img class="mySlides" src="img_lights.jpg" style="width:100%">
-              <img class="mySlides" src="img_mountains.jpg" style="width:100%">
-              <img class="mySlides" src="img_forest.jpg" style="width:100%">
-          </div>
-      <button onclick="sequence()"> sequence()</button>
-      <img id="me">
-      </div>
 
-  <!---
-
-
-
-
-
-
-      <p>How do you want the show to be played? </p>
-      <button onclick="random()"> Random</button>
-      <div id="main" style="display:none;">
-      <canvas id="viewport"></canvas>
-      <h2 id = "me" class = "text-block"></h2>
-      </div>
-
-
-
-    <button onclick="myFunction()"> Sequence</button>
-
-  <div id = "major" display = "none">
-    <button onclick="sequence()"> Sequence</button>
-
-    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-  </div>
-
-
-  <p>How do you want the show to be played? </p>
-  <button onclick="random()"> Random</button>
-  <div id="main" style="display:none;">
-  <canvas id="viewport"></canvas>
-  <h2 id = "me" class = "text-block"></h2>
-  </div>
-
-  <button onclick="nextSlide()"> Sequence</button>
-  <ul id="slides">
-      <li class="slide showing">Slide 1</li>
-      <li class="slide">Slide 2</li>
-      <li class="slide">Slide 3</li>
-      <li class="slide">Slide 4</li>
-      <li class="slide">Slide 5</li>
-  </ul>
-
-  <p>What effect do you want to see? </p>
-
-  <form>
-    <select id = "effect">
-      <option value="transition">Transition</option>
-      <option value="transformation">Transformation</option>
+<body>
+  <div id="1">
+    <h1>Hello, Slideshow !</h1>
+    <br><br>
+    <p>How Do You Want To Play It ?</p>
+    <select id="play">
+      <option value="Random">Random</option>
+      <option value="Sequential">Sequential(manual)</option>
     </select>
-  </form>
+    <p>What Effect Do You Want ?</p>
+    <select id="effect">
+      <option value="Transition">Transition</option>
+      <option value="Transformation">Transformation</option>
+      <option value="None">None</option>
+    </select>
+  </div>
+  <br>
+  <br>
 
-  <button type = "button" onlick = "myf1()"> Submit</button>
-    <script>
-    var input1 = document.getElementById("effect").value;
-    if (input1 == "Transformation")
-    {
+  <button id="2" onclick="showSlides()">Show</button>
 
-    }
-    function myf1() {
-      document.getElementById("main").style.display = "";
-  }
-  </script>
--->
+  <div id="3" hidden>
+    <canvas id="myCanvas" width="650" height="650" style="border:1px solid #d3d3d3;background:#ffffff;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <div id="pic">
+      <!--
+      <img hidden src="1.jpeg" alt="The Tulip" />
+      <img hidden id="tulip" src="2.jpg" alt="The Tulip" />
+      <img hidden id="tulip" src="3.jpg" alt="The Tulip" />
+      <img hidden id="tulip" src="4.jpg" alt="The Tulip" />
+      <img hidden id="tulip" src="5.jpg" alt="The Tulip" />
+      <img hidden id="tulip" src="6.jpg" alt="The Tulip" />
+      <img hidden id="tulip" src="7.jpg" alt="The Tulip" />
+      <img hidden id="tulip" src="8.jpeg" alt="The Tulip" />
+      <img hidden id="tulip" src="9.jpg" alt="The Tulip" />-->
+    </div>
+
+    <div id="keys" hidden>
+      <a hidden class="prev fa fa-step-backward" onclick="plusSlides(-1)"></a>
+      <a hidden class="next fa fa-step-forward" onclick="plusSlides(1)"></a>
+      <a hidden class="start fa fa-play" onclick="start()"></a>
+      <a hidden class="stop fa fa-pause" onclick="stop()"></a>
+    </div>
+
+
+  </div>
+
 </body>
+
 </html>

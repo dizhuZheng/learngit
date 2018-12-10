@@ -1,73 +1,123 @@
-data = [
-        {"name": "1.JPG", "info": "swimming"},
-        {"name": "2.JPG", "info": "painting"},
-        {"name": "3.JPG", "info": "drinking"},
-        {"name": "4.JPG", "info": "Cat"},
-        {"name": "5.JPG", "info": "Beef"},
-        {"name": "6.JPG", "info": "Boat"},
-        {"name": "7.JPG", "info": "Shore"},
-        {"name": "8.JPG", "info": "Church"},
-        {"name": "9.JPG", "info": "Sea"},
-        {"name": "10.JPG", "info": "Fish"},
-        {"name": "11.JPG", "info": "BBQ"},
-        {"name": "12.JPG", "info": "Street"},
-        {"name": "13.JPG", "info": "Ring"},
-        {"name": "14.JPG", "info": "Another BBQ"},
-        {"name": "15.JPG", "info": "Fruit"},
-        {"name": "16.JPG", "info": "Walk"},
-        {"name": "17.JPG", "info": "My Dog"},
-        {"name": "18.JPG", "info": "Lake"},
-        {"name": "19.JPG", "info": "Me"},
-        {"name": "20.JPG", "info": "Window"}
-    ]
+var slideIndex;
+var flag = false;
+var v;
 
-var index;
+var myObj, i, x = "";
 
-function random()
-{
-    document.getElementById("main").style.display = "";
-    var canvas = document.getElementById('viewport');
-    var context = canvas.getContext('2d');
-    index = Math.floor(Math.random()*20);
-    var imag = data[index];
-    document.getElementById("me").innerText = imag.info;
-    make_base();
-    function make_base()
+var obj,values,xmlhttp,myObj,x,txt="";
+obj={div:"pic",limit:20};
+values=JSON.stringify(obj);
+xmlhttp= new XMLHttpRequest();
+xmlhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        for (x in myObj) {
+          txt += "<img>" + myObj[x].src  + myObj[x].info;
+        }   
+        document.getElementById("pic").innerHTML = txt;
+      }
+};
+
+xmlhttp.open("POST", "test.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + values);
+
+function showSlides() {
+    disappear();
+
+    document.getElementById("keys").style.display = "block";
+    if (document.getElementById("play").value == "Random" && !flag) {
+        slideIndex = 0;
+        document.getElementsByTagName("A")[2].style.display = "block";
+        document.getElementsByTagName("A")[3].style.display = "block";
+        document.getElementsByTagName("A")[0].style.display = "none";
+        document.getElementsByTagName("A")[1].style.display = "none";
+        b();
+    }
+
+    else if (document.getElementById("play").value == "Sequential")
     {
-        base_image = new Image();
-        base_image.src = imag.name;
-        base_image.onload = function(){
-        context.drawImage(base_image, 0, 0);
-        }
+        slideIndex = 1;
+        document.getElementsByTagName("A")[0].style.display = "block";
+        document.getElementsByTagName("A")[1].style.display = "block";
+        document.getElementsByTagName("A")[2].style.display = "none";
+        document.getElementsByTagName("A")[3].style.display = "none";
+        a(slideIndex);
+    }
+
+    if(document.getElementById("effect").value == "Transition")
+    {
+        document.getElementById("myCanvas").classList.add("transit");
+    }
+
+    else if(document.getElementById("effect").value == "Transformation")
+    {
+        document.getElementById("myCanvas").classList.add("transform");
     }
 }
 
-//document.getElementById("toggle").style.visibility="hidden";
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-    showDivs(slideIndex += n);
+function plusSlides(n) {
+    a(slideIndex += n);
 }
 
-function sequence()
-{
-    var base_image;
-    for(var i = 0; i<data.length; i++){
-        base_image = data[i].name;
-        document.getElementById("me").src = base_image;
+function currentSlide(n) {
+    a(slideIndex = n);
+}
+
+function stop(){
+    flag = true;
+    clearTimeout(v);
+}
+
+function start(){
+    flag = false;
+    b();
+}
+
+function a(n) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var i;
+    var list = document.getElementById("pic");
+    var slides = list.getElementsByTagName("IMG");
+
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+
+    for (i = 0; i < slides.length; i++) {
+        ctx.clearRect(15, 15, 650, 650);
+    }
+    ctx.drawImage(slides[slideIndex - 1], 15, 15);
+    ctx.font = "bold 30px arial";
+    ctx.fillStyle = "blue";
+    ctx.fillText(slideIndex + "/" + slides.length, 500, 500);
+}
+
+function b() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var i;
+    var list = document.getElementById("pic");
+    var slides = list.getElementsByTagName("IMG");
+
+    for (i = 0; i < slides.length; i++) {
+        ctx.clearRect(15, 15, 650, 650);
     }
 
-    function showDivs(n) {
-        var canvas = document.getElementById('viewport');
-        var context = canvas.getContext('2d');
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length} ;
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        x[slideIndex-1].style.display = "block";
+    slideIndex++;
+
+    if (slideIndex > slides.length) { slideIndex = 1 }
+
+    ctx.drawImage(slides[slideIndex - 1], 15, 15);
+    ctx.font = "bold 30px arial";
+    ctx.fillStyle = "blue";
+    ctx.fillText(slideIndex + "/" + slides.length, 500, 500);
+    v = setTimeout(b, 2000); 
+    v;
 }
+
+function disappear() {
+    document.getElementById("1").style.display = "none";
+    document.getElementById("2").style.display = "none";
+    document.getElementById("3").style.display = "block";
 }

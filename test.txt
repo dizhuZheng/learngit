@@ -1,0 +1,8 @@
+Jarr = [{source:pic:"1.jpeg", name:"Caption 1"},
+{source:pic:"2.jpg", name:"Caption 2"},
+{source:pic:"3.jpg", name:"Caption 3"},
+{source:pic:"4.jpg", name:"Caption 4"},
+{source:pic:"5.jpg", name:"Caption 5"},
+{source:pic:"6.jpg", name:"Caption 6"}];
+
+

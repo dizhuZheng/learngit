@@ -15,7 +15,43 @@ h1 {
 p {
     background-color: yellow;
 }
-.mySlides {display:none;}
+
+.prev, .next, .start, .stop {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: rgb(223, 73, 178);
+  font-weight: bold;
+  font-size: 36px;
+  transition: 0.6s ease;
+  border-radius: 0 4px 4px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Position the "start button" to the right */
+.start {
+  right: 500px;
+  border-radius: 4px 4px 4px 4px;
+}
+
+/* Position the "next button" to the middle */
+.stop {
+  right: 300px;
+  border-radius: 4px 4px 4px 4px;
+}
+
+.prev:hover, .next:hover, .start:hover, .stop:hover {
+  background-color: rgb(78, 209, 89);
+}
 
 .text-block {
     position: absolute;
@@ -25,14 +61,6 @@ p {
     color: white;
     padding-left: 20px;
     padding-right: 20px;
-}
-
-.numbertext {
-  color: #da5619;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
 }
 
 .fade {
@@ -53,21 +81,21 @@ p {
 }
 
 .transit {
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
   -webkit-transition-property: width, height; /* Safari */
   transition-property: width, height;
-  -webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
-  transition: width 2s, height 4s;
+  -webkit-transition: width 1s, height 1s; /* For Safari 3.1 to 6.0 */
+  transition: width 1s, height 1s;
 }
 
 .transit:hover {
-  width: 20%;
-  height: 20%;
+  width: 40%;
+  height: 40%;
 }
 
-div.b {
-  -ms-transform: skewY(20deg); /* IE 9 */
-  -webkit-transform: skewY(20deg); /* Safari 3-8 */
-  transform: skewY(20deg);
+.transform{
+  -ms-transform: rotate(30deg); /* IE 9 */
+  -webkit-transform: rotate(30deg); /* Safari */
+  transform: rotate(30deg); /* Standard syntax */
 }
