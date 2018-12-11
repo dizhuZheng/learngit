@@ -18,9 +18,24 @@ xmlhttp.onreadystatechange = function(){
       }
 };
 
-xmlhttp.open("POST", "test.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send("x=" + values);
+// xmlhttp.open("POST", "test.php", true);
+// xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// xmlhttp.send("x=" + values);
+
+function messageServer() {
+    var x = document.getElementById("ajax_input").value;
+    console.log("Value changed to " + x);
+    document.getElementById("fast_output").innerHTML = "You selected: " + x;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("ajax_output").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "http://localhost:5000", true);
+    xhttp.send();
+}
 
 function showSlides() {
     disappear();
