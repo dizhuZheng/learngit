@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <button onclick="showContent()">Show content</button>
+
+    <template>
+      <h2>Flower</h2>
+    <img class="myClass">
+</template>
+    <script>
+        /*
+        var myArr = [{ src: "1.jpg", info: "c1" }, { src: "2.jpg", info: "2" }, { src: "3.jpg", info: "3" }];
+
+        function showContent() {
+            var i;
+            var m = document.getElementsByClassName("myClass")[0];
+            for (i = 0; i < 1; i++) {
+                m.src = myArr[i].src;
+                document.write(myArr[i].info);
+            }
+        }*/
+        function showContent() {
+        var myArr = ["1.jpg", "2.jpg", "3.jpg"];
+        var temp, item, a, i;
+  //get the template element:
+  temp = document.getElementsByTagName("template")[0];
+  //get the DIV element from the template:
+  item = temp.content.querySelector("img");
+  //for each item in the array:
+  for (i = 0; i < myArr.length; i++) {
+    //Create a new node, based on the template:
+    a = document.importNode(item, true);
+    //Add data from the array:
+    a.src = myArr[i];
+    //append the new node wherever you like:
+    document.body.appendChild(a);
+  }
+}
+    </script>
+
+
+</body>
+
+</html>

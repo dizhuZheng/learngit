@@ -1,63 +1,26 @@
 var slideIndex;
 var flag = false;
 var v;
-
-var myObj, i, x = "";
-
-var obj,values,xmlhttp,myObj,x,txt="";
-obj={div:"pic",limit:20};
-values=JSON.stringify(obj);
-xmlhttp= new XMLHttpRequest();
-xmlhttp.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200) {
-        myObj = JSON.parse(this.responseText);
-        for (x in myObj) {
-          txt += "<img>" + myObj[x].src  + myObj[x].info;
-        }   
-        document.getElementById("pic").innerHTML = txt;
-      }
-};
-
-// xmlhttp.open("POST", "test.php", true);
-// xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-// xmlhttp.send("x=" + values);
-
-function messageServer() {
-    var x = document.getElementById("ajax_input").value;
-    console.log("Value changed to " + x);
-    document.getElementById("fast_output").innerHTML = "You selected: " + x;
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("ajax_output").innerHTML = this.responseText;
-        }
-    };
-    console.log("Sending to URL: http://localhost:5000?value=3");
-    xhttp.open("GET", "http://localhost:5000?value=3", true);
-    xhttp.send();
-}
+var myArr = ["caption1","caption2","caption3","caption4","caption5","caption6",
+"caption7","caption8","caption9","caption10","caption11","caption12",
+"caption13","caption14","caption15","caption16","caption17","caption18",
+"caption19","caption20"];
 
 function showSlides() {
     disappear();
 
     document.getElementById("keys").style.display = "block";
+
     if (document.getElementById("play").value == "Random" && !flag) {
+        document.getElementById("key2").style.display = "block";
         slideIndex = 0;
-        document.getElementsByTagName("A")[2].style.display = "block";
-        document.getElementsByTagName("A")[3].style.display = "block";
-        document.getElementsByTagName("A")[0].style.display = "none";
-        document.getElementsByTagName("A")[1].style.display = "none";
         b();
     }
 
     else if (document.getElementById("play").value == "Sequential")
     {
+        document.getElementById("key1").style.display = "block";
         slideIndex = 1;
-        document.getElementsByTagName("A")[0].style.display = "block";
-        document.getElementsByTagName("A")[1].style.display = "block";
-        document.getElementsByTagName("A")[2].style.display = "none";
-        document.getElementsByTagName("A")[3].style.display = "none";
         a(slideIndex);
     }
 
@@ -72,30 +35,29 @@ function showSlides() {
     }
 }
 
-function plusSlides(n) {
-    a(slideIndex += n);
-}
+    function plusSlides(n) {
+        a(slideIndex += n);
+    }
 
-function currentSlide(n) {
-    a(slideIndex = n);
-}
+    function currentSlide(n) {
+        a(slideIndex = n);
+    }
 
-function stop(){
-    flag = true;
-    clearTimeout(v);
-}
+    function stop(){
+        flag = true;
+        clearTimeout(v);
+    }
 
-function start(){
-    flag = false;
-    b();
-}
+    function start(){
+        flag = false;
+        b();
+    }
 
 function a(n) {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     var i;
-    var list = document.getElementById("pic");
-    var slides = list.getElementsByTagName("IMG");
+    var slides = document.getElementsByTagName("IMG");
 
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
@@ -104,17 +66,17 @@ function a(n) {
         ctx.clearRect(15, 15, 650, 650);
     }
     ctx.drawImage(slides[slideIndex - 1], 15, 15);
+
     ctx.font = "bold 30px arial";
     ctx.fillStyle = "blue";
-    ctx.fillText(slideIndex + "/" + slides.length, 500, 500);
+    ctx.fillText(myArr[slideIndex-1],400,500);
 }
 
 function b() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     var i;
-    var list = document.getElementById("pic");
-    var slides = list.getElementsByTagName("IMG");
+    var slides = document.getElementsByTagName("IMG");
 
     for (i = 0; i < slides.length; i++) {
         ctx.clearRect(15, 15, 650, 650);
@@ -127,13 +89,20 @@ function b() {
     ctx.drawImage(slides[slideIndex - 1], 15, 15);
     ctx.font = "bold 30px arial";
     ctx.fillStyle = "blue";
-    ctx.fillText(slideIndex + "/" + slides.length, 500, 500);
-    v = setTimeout(b, 2000); 
+    ctx.fillText(myArr[slideIndex-1],400,500);
+    v = setTimeout(b, 2000);
     v;
-}
+ }
 
 function disappear() {
     document.getElementById("1").style.display = "none";
     document.getElementById("2").style.display = "none";
     document.getElementById("3").style.display = "block";
+}
+
+function check(){
+    if(document.getElementById("play").value == "" || document.getElementById("effect").value == "")
+        document.writeln("Either input can't be empty !");
+    else
+        showSlides();
 }

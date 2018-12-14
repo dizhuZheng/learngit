@@ -17,18 +17,18 @@ p {
 }
 
 .prev, .next, .start, .stop {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
   margin-top: -22px;
   color: rgb(223, 73, 178);
-  font-weight: bold;
   font-size: 36px;
   transition: 0.6s ease;
   border-radius: 0 4px 4px 0;
+  position: absolute;
+  top: 50%;
+  font-weight: bold;
+  width: auto;
+  padding: 16px;
   user-select: none;
+  cursor: pointer;
 }
 
 /* Position the "next button" to the right */
@@ -51,33 +51,6 @@ p {
 
 .prev:hover, .next:hover, .start:hover, .stop:hover {
   background-color: rgb(78, 209, 89);
-}
-
-.text-block {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: black;
-    color: white;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
 }
 
 .transit {
